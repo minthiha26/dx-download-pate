@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      body {
+        /* overflow: auto; */
+        font-family: Arial, sans-serif;
+        /* color: #AAAAAA; */
+        background-image: url("./assets/BG2.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      @media (max-width: 768px) {
+        body {
+          background-image: url("./assets/Bg.png");
+        }
+      }
+      .container {
+        text-align: center;
+        /* padding: 30px; */
+      }
+
+      .image-title {
+        width: 200px;
+      }
+
+      .copyAppBox {
+        border-radius: 16px;
+        background: linear-gradient(
+          112deg,
+          rgba(136, 136, 136, 0.2) 10.86%,
+          rgba(68, 68, 68, 0.11) 44.18%,
+          rgba(93, 90, 90, 0.12) 64.53%,
+          rgba(136, 128, 128, 0.13) 100%
+        );
+        backdrop-filter: blur(6px);
+      }
+
+      .copy {
+        background-color: #333;
+        padding: 8px 30px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .down {
+        border-radius: 75px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        right: -300px; /* Start off-screen */
+        /* width: 600px; */
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 50;
+        transition: right 0.3s ease-in-out;
+        padding: 20px;
+      }
+      .sidebar.open {
+        right: 0; /* Slide in the sidebar */
+      }
+
+      .close {
+        border-radius: 750px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .andDown {
+        border-radius: 40px;
+        background: linear-gradient(
+          180deg,
+          #ff7e13 0%,
+          #ff4d07 49.5%,
+          #ff7e13 100%
+        );
+      }
+
+      .andBoxShadow {
+        border-radius: 40.129px;
+        opacity: 0.55;
+        background: linear-gradient(
+          180deg,
+          #ff7e13 0%,
+          #ff4d07 49.5%,
+          #ff7e13 100%
+        );
+        filter: blur(10.032259941101074px);
+      }
+
+      .tab-link {
+        position: relative;
+        padding-bottom: 4px; /* Space for the active bar */
+      }
+
+      .tab-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: orange;
+      }
+
+      .text-color-1 {
+        color: var(--White, #fff);
+      }
+      .text-color-2 {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .text-color-3 {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .downbtn-color {
+        background: linear-gradient(
+          180deg,
+          #ff7e13 0%,
+          #ff4d07 49.5%,
+          #ff7e13 100%
+        );
+      }
+    </style>
+  </head>
+  <body class="h-screen overflow-hidden">
+    <div class="h-full overflow-y-scroll">
+      <!-- mobile overlay start  -->
+      <div
+        class="text-white hidden h-[85%] md:h-screen rounded-tl-[25px] rounded-tr-[25px] md:rounded-tl-[0px] md:rounded-tr-[0px] bg-[#161619] absolute bottom-0 right-0 w-full md:w-[527px] z-[1000] overflow-y-scroll pt-5 pb-10 transition-all"
+        id="mobileOverlay"
+      >
+        <div class="px-4 flex flex-col items-center md:items-start gap-5">
+          <div class="flex justify-between items-center w-full">
+            <div class="">
+              <button
+                id="closemboverlay"
+                class="text-white bg-gray-800 w-6 h-6 rounded-full hidden md:block"
+              >
+                x
+              </button>
+            </div>
+            <h1 class="text-[14px] md:text-[16px] font-semibold">
+              Installation Tutorial
+            </h1>
+            <div class="">
+              <button
+                id="closemboverlay2"
+                class="text-white bg-gray-800 w-6 h-6 rounded-full md:hidden block"
+              >
+                x
+              </button>
+            </div>
+          </div>
+          <p class="text-[14px] md:text-[16px] font-semibold">
+            Installation Guide for Other Mobile Phones
+          </p>
+          <p class="text-[12px] md:text-[16px]">
+            Step 1: If this screen appears when you download the app
+          </p>
+          <img
+            class="w-[269px] md:w-[320px] h-auto object-cover"
+            src="./assets/down1.png"
+            alt=""
+          />
+          <p class="text-[12px] md:text-[16px]">
+            Step 2: Please go to the phone settings and turn on
+            <span class="text-orange-600">"Allow apps from this source"</span
+            > or turn off
+            <span class="text-orange-600"
+              >"Prohibit installation of malicious apps"</span
+            >
+          </p>
+          <img
+            class="w-[269px] md:w-[320px] h-auto object-cover"
+            src="./assets/down2.png"
+            alt=""
+          />
+          <p class="text-[12px] md:text-[16px]">
+            Step 3: <span class="text-orange-600"
+              >Click on the apk again to install it other</span
+            >
+          </p>
+          <div class="">
+            <p class="text-[12px] md:text-[14px]">Other</p>
+            <p class="text-[12px] md:text-[14px]">
+              If you have any questions, please join the QQ group to contact
+              customer service. Thank you for your support.
+            </p>
+          </div>
+          <button
+            class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+          >
+            <img
+              class="w-5 h-5 object-cover"
+              src="./assets/android.svg"
+              alt=""
+            />
+            <p class="text-[14px]">Android下载</p>
+          </button>
+        </div>
+      </div>
+      <!-- mobile overlay end -->
+      <!-- header start -->
+      <div class="flex justify-center pt-[30px] pb-[30px] xl:py-[30px]">
+        <img
+          src="./assets/title.png"
+          alt="Title Image"
+          class="xl:w-auto w-[150px] xl:h-20 h-[50px]"
+        />
+      </div>
+      <!-- header end  -->
+
+      <!-- first section start  -->
+      <div class="max-w-[700px] mx-auto px-3 mb-10">
+        <div class="flex items-center gap-3 mb-5">
+          <img src="./assets/world.svg" alt="" />
+          <h1 class="text-white text-[14px] font-[500]">
+            Ctrl + D to Bookmark in browser
+          </h1>
+        </div>
+        <div
+          class="copyAppBox flex flex-col gap-5 w-full md:w-[90%] xl:px-[32px] px-[8px] xl:py-[24px] py-[20px]"
+        >
+          <div class="flex items-start justify-between">
+            <div class="">
+              <div class="flex gap-3 items-center">
+                <h1
+                  class="text-color-1 text-[12px] md:text-[16px] font-semibold"
+                >
+                  Share Url with friends
+                </h1>
+                <button
+                  class="text-[10px] md:text-[12px] font-semibold bg-purple-600 px-3 py-1 rounded-full text-white"
+                >
+                  Recommended
+                </button>
+              </div>
+              <p class="text-color-2 text-[11px] md:text-[14px]">
+                https://dyls.app
+              </p>
+            </div>
+            <button
+              class="down px-[18px] py-[7px] text-[10px] md:text-[12px] font-semibold text-white"
+            >
+              <span class="hidden md:block">Copy Link</span
+              ><span class="block md:hidden">Copy</span>
+            </button>
+          </div>
+          <div class="border border-gray-600"></div>
+          <div class="flex items-start justify-between">
+            <div class="">
+              <div class="flex gap-3 items-center">
+                <h1
+                  class="text-color-1 text-[12px] md:text-[16px] font-semibold"
+                >
+                  Our main domain name
+                </h1>
+                <button
+                  class="text-[10px] md:text-[12px] font-semibold bg-orange-600 px-3 py-1 rounded-full text-white"
+                >
+                  Main
+                </button>
+              </div>
+              <p class="text-color-2 text-[11px] md:text-[14px]">
+                https://dyls.app
+              </p>
+            </div>
+            <button
+              class="down px-[18px] py-[7px] text-[10px] md:text-[12px] font-semibold text-white"
+            >
+              <span class="hidden md:block">Enter Link</span
+              ><span class="block md:hidden">Enter</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- first section end  -->
+
+      <!-- second section start  -->
+      <div class="max-w-[700px] mx-auto px-3">
+        <div class="flex items-center gap-3 mb-5">
+          <img src="./assets/down.svg" alt="" />
+          <h1 class="text-white text-[14px] font-[500]">
+            Application Download
+          </h1>
+        </div>
+        <div
+          class="copyAppBox w-full md:w-[90%] xl:px-[32px] px-[10px] xl:py-[24px] py-[10px] flex flex-col gap-4"
+        >
+          <!-- Android Download -->
+          <div class="flex justify-between items-center">
+            <div class="flex items-start gap-4">
+              <img
+                src="./assets/android.svg"
+                alt="Android"
+                class="w-5 h-5 md:w-8 md:h-8"
+              />
+              <div>
+                <h1
+                  class="text-color-1 text-[12px] md:text-[16px] font-semibold"
+                >
+                  Android Download
+                </h1>
+                <p class="text-color-2 text-[11px] md:text-[14px]">
+                  More convenient to download the app, version 3.0.1.5
+                </p>
+              </div>
+            </div>
+            <button class="down px-[20px] xl:px-[25px] py-[7px]" id="mobileNav">
+              <img src="./assets/down.svg" alt="" />
+            </button>
+          </div>
+          <div class="border border-gray-600"></div>
+
+          <!-- iOS Download -->
+          <div class="flex justify-between items-center">
+            <div class="flex items-start gap-4">
+              <img
+                src="./assets/ios.svg"
+                alt="iOS"
+                class="w-5 h-5 md:w-8 md:h-8"
+              />
+              <div>
+                <h1
+                  class="text-color-1 text-[12px] md:text-[16px] font-semibold"
+                >
+                  iOS Download
+                </h1>
+                <p class="text-color-2 text-[11px] md:text-[14px]">
+                  More convenient to download the app, version 3.0.1.5
+                </p>
+              </div>
+            </div>
+            <button
+              class="down px-[20px] xl:px-[25px] py-[7px] open-ios-sidebar"
+            >
+              <img src="./assets/down.svg" alt="" />
+            </button>
+          </div>
+          <div class="border border-gray-600"></div>
+
+          <!-- iOS Lite Version -->
+          <div class="flex justify-between items-center">
+            <div class="flex items-start gap-4">
+              <img
+                src="./assets/ios.svg"
+                alt="iOS Lite"
+                class="w-5 h-5 md:w-8 md:h-8"
+              />
+              <div>
+                <h1
+                  class="text-color-1 text-[12px] md:text-[16px] font-semibold"
+                >
+                  iOS Lite Version Download
+                </h1>
+                <p class="text-color-2 text-[11px] md:text-[14px]">
+                  More convenient to download the app, version 3.0.1.5
+                </p>
+              </div>
+            </div>
+            <button
+              class="down px-[20px] xl:px-[25px] py-[7px] open-ios-sidebar"
+              id="open-ios-sidebar"
+            >
+              <img src="./assets/down.svg" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- second section end  -->
+      <!-- footer start  -->
+      <div class="max-w-[700px] mx-auto px-3 pb-10">
+        <p class="text-center mt-6 text-[10px] md:text-[12px] text-color-3">
+          Note: The APP itself does not store any videos/pictures, etc. All
+          resources are retrieved from the public network by search engines.
+        </p>
+        <p class="text-center text-[10px] md:text-[12px] text-color-3">
+          We promise that the App is absolutely green and safe, and will not
+          cause any damage to your data and assets. Please feel free to install
+          and use it.
+        </p>
+      </div>
+      <!-- footer end -->
+    </div>
+    <script>
+      const mobileNav = document.getElementById("mobileNav");
+      const mobileOverlay = document.getElementById("mobileOverlay");
+      const closemboverlay = document.getElementById("closemboverlay");
+      const closemboverlay2 = document.getElementById("closemboverlay2");
+
+      mobileNav.addEventListener("click", function () {
+        if (
+          mobileOverlay.style.display === "none" ||
+          mobileOverlay.style.display === ""
+        ) {
+          mobileOverlay.style.display = "block";
+        } else {
+          mobileOverlay.style.display = "none";
+        }
+      });
+      closemboverlay.addEventListener("click", () => {
+        mobileOverlay.style.display = "none";
+      });
+      closemboverlay2.addEventListener("click", () => {
+        mobileOverlay.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

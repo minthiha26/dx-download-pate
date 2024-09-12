@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
     <style type="text/tailwindcss">
       body {
         /* overflow: auto; */
@@ -130,82 +136,6 @@
   </head>
   <body class="h-screen overflow-hidden">
     <div class="h-full overflow-y-scroll">
-      <!-- mobile overlay start  -->
-      <div
-        class="text-white hidden h-[85%] md:h-screen rounded-tl-[25px] rounded-tr-[25px] md:rounded-tl-[0px] md:rounded-tr-[0px] bg-[#161619] absolute bottom-0 right-0 w-full md:w-[527px] z-[1000] overflow-y-scroll pt-5 pb-10 transition-all"
-        id="mobileOverlay"
-      >
-        <div class="px-4 flex flex-col items-center md:items-start gap-5">
-          <div class="flex justify-between items-center w-full">
-            <div class="">
-              <button
-                id="closemboverlay"
-                class="text-white bg-gray-800 w-6 h-6 rounded-full hidden md:block"
-              >
-                x
-              </button>
-            </div>
-            <h1 class="text-[14px] md:text-[16px] font-semibold">
-              Installation Tutorial
-            </h1>
-            <div class="">
-              <button
-                id="closemboverlay2"
-                class="text-white bg-gray-800 w-6 h-6 rounded-full md:hidden block"
-              >
-                x
-              </button>
-            </div>
-          </div>
-          <p class="text-[14px] md:text-[16px] font-semibold">
-            Installation Guide for Other Mobile Phones
-          </p>
-          <p class="text-[12px] md:text-[16px]">
-            Step 1: If this screen appears when you download the app
-          </p>
-          <img
-            class="w-[269px] md:w-[320px] h-auto object-cover"
-            src="./assets/down1.png"
-            alt=""
-          />
-          <p class="text-[12px] md:text-[16px]">
-            Step 2: Please go to the phone settings and turn on
-            <span class="text-orange-600">"Allow apps from this source"</span
-            > or turn off
-            <span class="text-orange-600"
-              >"Prohibit installation of malicious apps"</span
-            >
-          </p>
-          <img
-            class="w-[269px] md:w-[320px] h-auto object-cover"
-            src="./assets/down2.png"
-            alt=""
-          />
-          <p class="text-[12px] md:text-[16px]">
-            Step 3: <span class="text-orange-600"
-              >Click on the apk again to install it other</span
-            >
-          </p>
-          <div class="">
-            <p class="text-[12px] md:text-[14px]">Other</p>
-            <p class="text-[12px] md:text-[14px]">
-              If you have any questions, please join the QQ group to contact
-              customer service. Thank you for your support.
-            </p>
-          </div>
-          <button
-            class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
-          >
-            <img
-              class="w-5 h-5 object-cover"
-              src="./assets/android.svg"
-              alt=""
-            />
-            <p class="text-[14px]">Android下载</p>
-          </button>
-        </div>
-      </div>
-      <!-- mobile overlay end -->
       <!-- header start -->
       <div class="flex justify-center pt-[30px] pb-[30px] xl:py-[30px]">
         <img
@@ -272,6 +202,7 @@
               </p>
             </div>
             <button
+              onclick="enterLink('https://dyls.app')"
               class="down px-[18px] py-[7px] text-[10px] md:text-[12px] font-semibold text-white"
             >
               <span class="hidden md:block">Enter Link</span
@@ -312,7 +243,24 @@
                 </p>
               </div>
             </div>
-            <button class="down px-[20px] xl:px-[25px] py-[7px]" id="mobileNav">
+            <button
+              class="down px-[20px] xl:px-[25px] py-[7px] hidden md:block"
+              id="mobileNav"
+              type="button"
+              data-drawer-target="drawer-right-example"
+              data-drawer-show="drawer-right-example"
+              data-drawer-placement="right"
+              aria-controls="drawer-right-example"
+            >
+              <img src="./assets/down.svg" alt="" />
+            </button>
+            <button
+              class="down px-[20px] xl:px-[25px] py-[7px] md:hidden block"
+              type="button"
+              data-drawer-target="drawer-bottom-example"
+              data-drawer-show="drawer-bottom-example"
+              aria-controls="drawer-bottom-example"
+            >
               <img src="./assets/down.svg" alt="" />
             </button>
           </div>
@@ -338,7 +286,22 @@
               </div>
             </div>
             <button
-              class="down px-[20px] xl:px-[25px] py-[7px] open-ios-sidebar"
+              class="down px-[20px] xl:px-[25px] py-[7px] hidden md:block"
+              id="mobileNav"
+              type="button"
+              data-drawer-target="drawer-right-ios"
+              data-drawer-show="drawer-right-ios"
+              data-drawer-placement="right"
+              aria-controls="drawer-right-ios"
+            >
+              <img src="./assets/down.svg" alt="" />
+            </button>
+            <button
+              class="down px-[20px] xl:px-[25px] py-[7px] md:hidden block"
+              type="button"
+              data-drawer-target="drawer-bottom-ios"
+              data-drawer-show="drawer-bottom-ios"
+              aria-controls="drawer-bottom-ios"
             >
               <img src="./assets/down.svg" alt="" />
             </button>
@@ -365,8 +328,22 @@
               </div>
             </div>
             <button
-              class="down px-[20px] xl:px-[25px] py-[7px] open-ios-sidebar"
-              id="open-ios-sidebar"
+              class="down px-[20px] xl:px-[25px] py-[7px] hidden md:block"
+              id="mobileNav"
+              type="button"
+              data-drawer-target="drawer-right-ios"
+              data-drawer-show="drawer-right-ios"
+              data-drawer-placement="right"
+              aria-controls="drawer-right-ios"
+            >
+              <img src="./assets/down.svg" alt="" />
+            </button>
+            <button
+              class="down px-[20px] xl:px-[25px] py-[7px] md:hidden block"
+              type="button"
+              data-drawer-target="drawer-bottom-ios"
+              data-drawer-show="drawer-bottom-ios"
+              aria-controls="drawer-bottom-ios"
             >
               <img src="./assets/down.svg" alt="" />
             </button>
@@ -387,29 +364,1397 @@
         </p>
       </div>
       <!-- footer end -->
+      <!-- android desktop drawer component start -->
+      <div
+        id="drawer-right-example"
+        class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-[#161619] w-[527px] text-color-1"
+        tabindex="-1"
+        aria-labelledby="drawer-right-label"
+      >
+        <div class="flex justify-between items-center">
+          <div class=""></div>
+          <h5
+            id="drawer-right-label"
+            class="text-color-1 font-semibold text-[14px] lg:text-[16px]"
+          >
+            Installation Tutorial
+          </h5>
+          <button
+            type="button"
+            data-drawer-hide="drawer-right-example"
+            aria-controls="drawer-right-example"
+            class="rounded-full flex justify-center items-center"
+          >
+            <svg
+              class="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span class="sr-only">Close menu</span>
+          </button>
+        </div>
+
+        <div class="mb-4 dark:border-gray-700">
+          <ul
+            class="flex items-center justify-between"
+            id="default-styled-tab"
+            data-tabs-toggle="#default-styled-tab-content"
+            data-tabs-active-classes="text-orange-600 hover:text-orange-600 border-orange-600"
+            data-tabs-inactive-classes="border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400"
+            role="tablist"
+          >
+            <li class="me-2" role="presentation">
+              <button
+                class="inline-block p-4 border-b-2 rounded-t-lg"
+                id="profile-styled-tab"
+                data-tabs-target="#styled-profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                Huawei
+              </button>
+            </li>
+            <li class="me-2" role="presentation">
+              <button
+                class="nline-block p-4 border-b-2 rounded-t-lg"
+                id="dashboard-styled-tab"
+                data-tabs-target="#styled-dashboard"
+                type="button"
+                role="tab"
+                aria-controls="dashboard"
+                aria-selected="false"
+              >
+                Xiaomi
+              </button>
+            </li>
+            <li class="me-2" role="presentation">
+              <button
+                class="nline-block p-4 border-b-2 rounded-t-lg"
+                id="settings-styled-tab"
+                data-tabs-target="#styled-settings"
+                type="button"
+                role="tab"
+                aria-controls="settings"
+                aria-selected="false"
+              >
+                Vivo
+              </button>
+            </li>
+            <li role="presentation">
+              <button
+                class="nline-block p-4 border-b-2 rounded-t-lg"
+                id="contacts-styled-tab"
+                data-tabs-target="#styled-contacts"
+                type="button"
+                role="tab"
+                aria-controls="contacts"
+                aria-selected="false"
+              >
+                Oppo
+              </button>
+            </li>
+            <li role="other">
+              <button
+                class="nline-block p-4 border-b-2 rounded-t-lg"
+                id="other-styled-tab"
+                data-tabs-target="#styled-other"
+                type="button"
+                role="tab"
+                aria-controls="other"
+                aria-selected="false"
+              >
+                Other
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div id="default-styled-tab-content">
+          <div
+            class="hidden p-4 rounded-lg"
+            id="styled-profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <div class="flex flex-col gap-5">
+              <h1>华为手机安装指引</h1>
+              <p class="text-[12px] md:text-[16px] text-red-500">
+                请下载apk后，断网安装!
+              </p>
+              <div class="step-1">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[10px] md:text-[14px]">
+                    第一步：关闭纯净模式，关闭增加防护
+                  </p>
+                  <p class="text-[10px] md:text-[14px]">
+                    1.进入设置-系统和更新-纯净模式-关闭（如没有纯净模式可跳过此步骤）
+                  </p>
+                  <p class="text-[10px] md:text-[12px] text-cyan-600 mb-3">
+                    鸿蒙3.0以上系统纯净模式强制开启且不可关闭
+                  </p>
+                </div>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-1-1.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-1-2.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-2">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.再次点击apk安装，点击[了解风险]，勾选[已了解此应用存在风险]并点击[仍然安装]
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-1-3.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-1-4.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-3">
+                <p class="text-[10px] md:text-[14px] mb-3">3.已安装完毕</p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  第二步：如安装后仍无法使用，可解除风险管控
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  系统内置“手机管家”有可能会错误地把第三方来源应用添加到风险管控
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  1.进入“手机管家” -> “病毒查杀” ->
+                  “风险/应用管控中心”，检查应用是否在风险项中
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-2-1.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-2-2.jpg"
+                    alt=""
+                  />
+                </div>
+                <p class="text-[10px] md:text-[14px] my-3">
+                  2.点击被管控的应用，点击左下角的“解除管控”
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-2-3.jpg"
+                    alt=""
+                  />
+                  <div class="flex-1 w-full lg:w-[50%] h-auto"></div>
+                </div>
+              </div>
+              <div class="step-4">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  第三步：调整安全设置
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  1.进入设置-安全-更多安全设置
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.开启“外部来源应用下载”，关闭“外部来源应用检查”
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-3-1.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-3-2.jpg"
+                    alt=""
+                  />
+                </div>
+                <p class="text-[10px] md:text-[14px] my-3">
+                  3.点击“安装外部来源应用”，点击我们的应用，开启“允许安装应用”
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-3-3.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-3-4.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="">
+                <p class="text-[10px] md:text-[14px] text-gray-500 mb-5">
+                  其他
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  如有任何疑问，请加Q群联系客服。
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  感谢您的支持。
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+          <div
+            class="hidden p-4"
+            id="styled-dashboard"
+            role="tabpanel"
+            aria-labelledby="dashboard-tab"
+          >
+            <div class="flex flex-col gap-5">
+              <h1>小米手机安装指引</h1>
+              <p class="text-[12px] md:text-[16px] text-red-500">
+                请下载apk后，断网安装!
+              </p>
+              <div class="step-1">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[10px] md:text-[14px]">第一步：安装</p>
+                  <p class="text-[10px] md:text-[14px] my-3">
+                    1.点击刚下载的apk进入安装界面
+                  </p>
+                </div>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/xiaomi/xiaomi-1-1.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/xiaomi/xiaomi-1-2.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-2">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.点击[继续安装]，即可完成安装
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  第二步：解除风险管控
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  1.手机设置中搜索[安装未知应用]，选择我们的应用后，开启[允许来自此来源的应用]
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/xiaomi/xiaomi-2-3.jpeg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/xiaomi/xiaomi-2-4.jpeg"
+                    alt=""
+                  />
+                </div>
+                <p class="text-[10px] md:text-[14px] my-3">
+                  3.取消系统默认风险提示后，再次点击apk安装即可
+                </p>
+              </div>
+              <div class="">
+                <p class="text-[10px] md:text-[14px] text-gray-500 mb-5">
+                  其他
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  如有任何疑问，请加Q群联系客服。
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  感谢您的支持。
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+          <div
+            class="hidden p-4"
+            id="styled-settings"
+            role="tabpanel"
+            aria-labelledby="settings-tab"
+          >
+            <div class="flex flex-col gap-5">
+              <h1>VIVO手机安装指引</h1>
+              <p class="text-[12px] md:text-[16px] text-red-500">
+                请下载apk后，断网安装!
+              </p>
+              <div class="step-1">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[10px] md:text-[14px]">第一步：安装</p>
+                  <p class="text-[10px] md:text-[14px] my-3">
+                    1.手机设置中点击[安全与隐私]，选择[更多安全设置]
+                  </p>
+                </div>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/vivo/vivo-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/vivo/vivo-1-2.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-2">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.选择[应用安装]，关闭[禁止安装恶意应用]，点击[关闭]
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/vivo/vivo-1-3.png"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/vivo/vivo-1-4.png"
+                    alt=""
+                  />
+                </div>
+                <p class="text-[10px] md:text-[14px] my-3">
+                  3.取消系统默认风险提示后，再次点击apk安装即可
+                </p>
+              </div>
+              <div class="">
+                <p class="text-[10px] md:text-[14px] text-gray-500 mb-5">
+                  其他
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  如有任何疑问，请加Q群联系客服。
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  感谢您的支持。
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+          <div
+            class="hidden p-4"
+            id="styled-contacts"
+            role="tabpanel"
+            aria-labelledby="contacts-tab"
+          >
+            <div class="flex flex-col gap-5">
+              <h1>OPPO手机安装指引</h1>
+              <p class="text-[12px] md:text-[16px] text-red-500">
+                请下载apk后，断网安装!
+              </p>
+              <div class="step-1">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[10px] md:text-[14px]">第一步：安装</p>
+                  <p class="text-[10px] md:text-[14px] my-3">
+                    1.下载完成后，点击apk进入安装流程（系统安全机制默认对所有非官方应用市场下载安装的第三方来源应用的统一提示，请放心安装使用）
+                  </p>
+                </div>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/oppo/oppo-1-2.png"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/oppo/oppo-1-3.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-2">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.点击[授权本次安装]即可完成安装。
+                </p>
+              </div>
+              <div class="">
+                <p class="text-[10px] md:text-[14px] text-gray-500 mb-5">
+                  其他
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  如有任何疑问，请加Q群联系客服。
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  感谢您的支持。
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+          <div
+            class="hidden p-4 rounded-lg"
+            id="styled-other"
+            role="tabpanel"
+            aria-labelledby="other-tab"
+          >
+            <div class="flex flex-col items-center md:items-start gap-5">
+              <p class="text-[14px] md:text-[16px] font-semibold text-center">
+                Installation Guide for Other Mobile Phones
+              </p>
+              <p class="text-[12px] md:text-[16px]">
+                Step 1: If this screen appears when you download the app
+              </p>
+              <img
+                class="w-[269px] md:w-[320px] h-auto object-cover"
+                src="./assets/down1.png"
+                alt=""
+              />
+              <p class="text-[12px] md:text-[16px]">
+                Step 2: Please go to the phone settings and turn on
+                <span class="text-orange-600"
+                  >"Allow apps from this source"</span
+                > or turn off
+                <span class="text-orange-600"
+                  >"Prohibit installation of malicious apps"</span
+                >
+              </p>
+              <img
+                class="w-[269px] md:w-[320px] h-auto object-cover"
+                src="./assets/down2.png"
+                alt=""
+              />
+              <p class="text-[12px] md:text-[16px]">
+                Step 3: <span class="text-orange-600"
+                  >Click on the apk again to install it other</span
+                >
+              </p>
+              <div class="">
+                <p class="text-[12px] md:text-[14px]">Other</p>
+                <p class="text-[12px] md:text-[14px]">
+                  If you have any questions, please join the QQ group to contact
+                  customer service. Thank you for your support.
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- android desktop drawer component end -->
+      <!-- android mobile drawer component start -->
+      <div
+        id="drawer-bottom-example"
+        class="fixed bottom-0 left-0 z-40 w-full p-4 overflow-y-auto transition-transform transform translate-y-full bg-[#161619]"
+        tabindex="-1"
+        aria-labelledby="drawer-bottom-label"
+      >
+        <div class="flex justify-between items-center">
+          <div></div>
+          <h1 class="text-color-1 text-[12px] font-semibold">
+            Installation Tutorial
+          </h1>
+          <button
+            type="button"
+            data-drawer-hide="drawer-bottom-example"
+            aria-controls="drawer-bottom-example"
+            class="text-white"
+          >
+            <svg
+              class="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span class="sr-only">Close menu</span>
+          </button>
+        </div>
+
+        <br />
+
+        <!-- Drawer content here -->
+
+        <div class="mb-4">
+          <ul
+            class="flex justify-between items-center text-sm"
+            id="default-tab"
+            data-tabs-toggle="#default-tab-content"
+            data-tabs-active-classes="text-orange-600 hover:text-orange-600 border-orange-600 border-b-2"
+            role="tablist"
+          >
+            <li class="me-2" role="presentation">
+              <button
+                class=""
+                id="profile-tab"
+                data-tabs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                Huawei
+              </button>
+            </li>
+            <li class="me-2" role="presentation">
+              <button
+                class=""
+                id="dashboard-tab"
+                data-tabs-target="#dashboard"
+                type="button"
+                role="tab"
+                aria-controls="dashboard"
+                aria-selected="false"
+              >
+                Xiaomi
+              </button>
+            </li>
+            <li class="me-2" role="presentation">
+              <button
+                class=""
+                id="settings-tab"
+                data-tabs-target="#settings"
+                type="button"
+                role="tab"
+                aria-controls="settings"
+                aria-selected="false"
+              >
+                Vivo
+              </button>
+            </li>
+            <li role="presentation">
+              <button
+                class=""
+                id="contacts-tab"
+                data-tabs-target="#contacts"
+                type="button"
+                role="tab"
+                aria-controls="contacts"
+                aria-selected="false"
+              >
+                Oppo
+              </button>
+            </li>
+            <li role="presentation">
+              <button
+                class=""
+                id="other-tab"
+                data-tabs-target="#other"
+                type="button"
+                role="tab"
+                aria-controls="other"
+                aria-selected="false"
+              >
+                Other
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div id="default-tab-content">
+          <div
+            class="hidden p-4 text-white"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <div class="flex flex-col gap-5">
+              <h1>华为手机安装指引</h1>
+              <p class="text-[12px] md:text-[16px] text-red-500">
+                请下载apk后，断网安装!
+              </p>
+              <div class="step-1">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[10px] md:text-[14px]">
+                    第一步：关闭纯净模式，关闭增加防护
+                  </p>
+                  <p class="text-[10px] md:text-[14px]">
+                    1.进入设置-系统和更新-纯净模式-关闭（如没有纯净模式可跳过此步骤）
+                  </p>
+                  <p class="text-[10px] md:text-[12px] text-cyan-600 mb-3">
+                    鸿蒙3.0以上系统纯净模式强制开启且不可关闭
+                  </p>
+                </div>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-1-1.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-1-2.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-2">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.再次点击apk安装，点击[了解风险]，勾选[已了解此应用存在风险]并点击[仍然安装]
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-1-3.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-1-4.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-3">
+                <p class="text-[10px] md:text-[14px] mb-3">3.已安装完毕</p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  第二步：如安装后仍无法使用，可解除风险管控
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  系统内置“手机管家”有可能会错误地把第三方来源应用添加到风险管控
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  1.进入“手机管家” -> “病毒查杀” ->
+                  “风险/应用管控中心”，检查应用是否在风险项中
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-2-1.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-2-2.jpg"
+                    alt=""
+                  />
+                </div>
+                <p class="text-[10px] md:text-[14px] my-3">
+                  2.点击被管控的应用，点击左下角的“解除管控”
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-2-3.jpg"
+                    alt=""
+                  />
+                  <div class="flex-1 w-full lg:w-[50%] h-auto"></div>
+                </div>
+              </div>
+              <div class="step-4">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  第三步：调整安全设置
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  1.进入设置-安全-更多安全设置
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.开启“外部来源应用下载”，关闭“外部来源应用检查”
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-3-1.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-3-2.jpg"
+                    alt=""
+                  />
+                </div>
+                <p class="text-[10px] md:text-[14px] my-3">
+                  3.点击“安装外部来源应用”，点击我们的应用，开启“允许安装应用”
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-3-3.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/huawei/huawei-3-4.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="">
+                <p class="text-[10px] md:text-[14px] text-gray-500 mb-5">
+                  其他
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  如有任何疑问，请加Q群联系客服。
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  感谢您的支持。
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+          <div
+            class="hidden p-4 text-white"
+            id="dashboard"
+            role="tabpanel"
+            aria-labelledby="dashboard-tab"
+          >
+            <div class="flex flex-col gap-5">
+              <h1>小米手机安装指引</h1>
+              <p class="text-[12px] md:text-[16px] text-red-500">
+                请下载apk后，断网安装!
+              </p>
+              <div class="step-1">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[10px] md:text-[14px]">第一步：安装</p>
+                  <p class="text-[10px] md:text-[14px] my-3">
+                    1.点击刚下载的apk进入安装界面
+                  </p>
+                </div>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/xiaomi/xiaomi-1-1.jpg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/xiaomi/xiaomi-1-2.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-2">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.点击[继续安装]，即可完成安装
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  第二步：解除风险管控
+                </p>
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  1.手机设置中搜索[安装未知应用]，选择我们的应用后，开启[允许来自此来源的应用]
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/xiaomi/xiaomi-2-3.jpeg"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/xiaomi/xiaomi-2-4.jpeg"
+                    alt=""
+                  />
+                </div>
+                <p class="text-[10px] md:text-[14px] my-3">
+                  3.取消系统默认风险提示后，再次点击apk安装即可
+                </p>
+              </div>
+              <div class="">
+                <p class="text-[10px] md:text-[14px] text-gray-500 mb-5">
+                  其他
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  如有任何疑问，请加Q群联系客服。
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  感谢您的支持。
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+          <div
+            class="hidden p-4 text-white"
+            id="settings"
+            role="tabpanel"
+            aria-labelledby="settings-tab"
+          >
+            <div class="flex flex-col gap-5">
+              <h1>VIVO手机安装指引</h1>
+              <p class="text-[12px] md:text-[16px] text-red-500">
+                请下载apk后，断网安装!
+              </p>
+              <div class="step-1">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[10px] md:text-[14px]">第一步：安装</p>
+                  <p class="text-[10px] md:text-[14px] my-3">
+                    1.手机设置中点击[安全与隐私]，选择[更多安全设置]
+                  </p>
+                </div>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/vivo/vivo-1-1.png"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/vivo/vivo-1-2.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-2">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.选择[应用安装]，关闭[禁止安装恶意应用]，点击[关闭]
+                </p>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/vivo/vivo-1-3.png"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/vivo/vivo-1-4.png"
+                    alt=""
+                  />
+                </div>
+                <p class="text-[10px] md:text-[14px] my-3">
+                  3.取消系统默认风险提示后，再次点击apk安装即可
+                </p>
+              </div>
+              <div class="">
+                <p class="text-[10px] md:text-[14px] text-gray-500 mb-5">
+                  其他
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  如有任何疑问，请加Q群联系客服。
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  感谢您的支持。
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+          <div
+            class="hidden p-4 text-white"
+            id="contacts"
+            role="tabpanel"
+            aria-labelledby="contacts-tab"
+          >
+            <div class="flex flex-col gap-5">
+              <h1>OPPO手机安装指引</h1>
+              <p class="text-[12px] md:text-[16px] text-red-500">
+                请下载apk后，断网安装!
+              </p>
+              <div class="step-1">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[10px] md:text-[14px]">第一步：安装</p>
+                  <p class="text-[10px] md:text-[14px] my-3">
+                    1.下载完成后，点击apk进入安装流程（系统安全机制默认对所有非官方应用市场下载安装的第三方来源应用的统一提示，请放心安装使用）
+                  </p>
+                </div>
+                <div class="flex w-full gap-3 flex-wrap lg:flex-nowrap">
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/oppo/oppo-1-2.png"
+                    alt=""
+                  />
+                  <img
+                    class="flex-1 w-full lg:w-[50%] h-auto"
+                    src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/oppo/oppo-1-3.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="step-2">
+                <p class="text-[10px] md:text-[14px] mb-3">
+                  2.点击[授权本次安装]即可完成安装。
+                </p>
+              </div>
+              <div class="">
+                <p class="text-[10px] md:text-[14px] text-gray-500 mb-5">
+                  其他
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  如有任何疑问，请加Q群联系客服。
+                </p>
+                <p class="text-[10px] md:text-[14px] text-gray-500">
+                  感谢您的支持。
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+          <div
+            class="hidden p-4 text-white"
+            id="other"
+            role="tabpanel"
+            aria-labelledby="other-tab"
+          >
+            <div class="flex flex-col items-center md:items-start gap-5">
+              <p class="text-[14px] md:text-[16px] font-semibold text-center">
+                Installation Guide for Other Mobile Phones
+              </p>
+              <p class="text-[12px] md:text-[16px]">
+                Step 1: If this screen appears when you download the app
+              </p>
+              <img
+                class="w-[269px] md:w-[320px] h-auto object-cover"
+                src="./assets/down1.png"
+                alt=""
+              />
+              <p class="text-[12px] md:text-[16px]">
+                Step 2: Please go to the phone settings and turn on
+                <span class="text-orange-600"
+                  >"Allow apps from this source"</span
+                > or turn off
+                <span class="text-orange-600"
+                  >"Prohibit installation of malicious apps"</span
+                >
+              </p>
+              <img
+                class="w-[269px] md:w-[320px] h-auto object-cover"
+                src="./assets/down2.png"
+                alt=""
+              />
+              <p class="text-[12px] md:text-[16px]">
+                Step 3: <span class="text-orange-600"
+                  >Click on the apk again to install it other</span
+                >
+              </p>
+              <div class="">
+                <p class="text-[12px] md:text-[14px]">Other</p>
+                <p class="text-[12px] md:text-[14px]">
+                  If you have any questions, please join the QQ group to contact
+                  customer service. Thank you for your support.
+                </p>
+              </div>
+              <a
+                href="https://file.static01.com/files/66e04337852c2/dyls3105f0910v2.apk"
+                target="_blank"
+                class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+              >
+                <img
+                  class="w-5 h-5 object-cover"
+                  src="./assets/android.svg"
+                  alt=""
+                />
+                <p class="text-[14px]">Android下载</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- android mobile drawer component end -->
+
+      <!-- ios desktopoverlay start  -->
+      <div
+        id="drawer-right-ios"
+        class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-[#161619] w-[527px] text-color-1"
+        tabindex="-1"
+        aria-labelledby="drawer-right-label"
+      >
+        <div class="flex justify-between items-center">
+          <div class=""></div>
+          <h5
+            id="drawer-right-label"
+            class="text-color-1 font-semibold text-[14px] lg:text-[16px]"
+          >
+            Installation Tutorial
+          </h5>
+          <button
+            type="button"
+            data-drawer-hide="drawer-right-ios"
+            aria-controls="drawer-right-ios"
+            class="rounded-full flex justify-center items-center"
+          >
+            <svg
+              class="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span class="sr-only">Close menu</span>
+          </button>
+        </div>
+        <div class="flex flex-col gap-5">
+          <div class="my-5">
+            <h1 class="text-color-1 text-[14px] lg:text-[16px] font-semibold">
+              Steps to Install on iOS
+            </h1>
+            <p class="text-[10px] md:text-[14px] mb-3 text-red-500 mt-5">
+              请在Safari浏览器访问本网页，以确保正常下载安装!
+            </p>
+            <p class="text-[10px] md:text-[14px] mb-3">
+              第一步：下载安装描述文件
+            </p>
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              1.场景一(推荐)：使用Safari/谷歌浏览器访问本页面网址，点击下载
+              允许安装未知的来源，点击“允许”下载安装必要的描述文件
+            </p>
+            <img
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-1-1.png"
+              alt=""
+            />
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              2.场景二：使用第三方浏览器(如百度/QQ/UC浏览器)访问本页面网址，点击下载(若你符合场景一，可跳过此步骤)
+            </p>
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              可得到一个“***.mobileconfig”的安装文件，保存到“文件”中
+            </p>
+            <img
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-1-2-1.png"
+              alt=""
+            />
+            <p
+              class="text-[10px] md:text-[14px] my-3 text-gray-500 text-gray-500"
+            >
+              在“文件”中找到刚才下载的文件，点击
+            </p>
+            <img
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-1-2-2.png"
+              alt=""
+            />
+            <p class="text-[10px] md:text-[14px] my-3 text-gray-500">
+              第二步：进入手机系统设置页面
+            </p>
+            <img
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-2.png"
+              alt=""
+            />
+
+            <p class="text-[10px] md:text-[14px] my-3 text-gray-500">
+              第三步：进入通用，点击 描述文件与设备管理
+            </p>
+            <img
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-3.png"
+              alt=""
+            />
+
+            <p class="text-[10px] md:text-[14px] my-3 text-gray-500">
+              第四步：点击右上角“安装”即可
+            </p>
+            <img
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-4.png"
+              alt=""
+            />
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">其他</p>
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              如有任何疑问，请加Q群联系客服。
+            </p>
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              感谢您的支持。
+            </p>
+            <a
+              href="https://d35ptmbqc9rjea.cloudfront.net/files/66da6aeb62bb4/dyls3104f0905.ipa"
+              target="_blank"
+              class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+            >
+              <img
+                class="w-5 h-5 object-cover"
+                src="./assets/android.svg"
+                alt=""
+              />
+              <p class="text-[14px]">IOS</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- ios desktopoverlay end  -->
+
+      <!-- ios mobile overlay start  -->
+      <div
+        id="drawer-bottom-ios"
+        class="fixed bottom-0 left-0 z-40 w-full p-4 overflow-y-auto transition-transform transform translate-y-full bg-[#161619]"
+        tabindex="-1"
+        aria-labelledby="drawer-bottom-label"
+      >
+        <div class="flex justify-between items-center">
+          <div class=""></div>
+          <h5
+            id="drawer-right-label"
+            class="text-color-1 font-semibold text-[14px] lg:text-[16px]"
+          >
+            Installation Tutorial
+          </h5>
+          <button
+            type="button"
+            data-drawer-hide="drawer-bottom-ios"
+            aria-controls="drawer-bottom-ios"
+            class="rounded-full flex justify-center items-center"
+          >
+            <svg
+              class="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span class="sr-only"></span>
+          </button>
+        </div>
+        <div class="flex flex-col gap-5 text-white">
+          <div class="my-5">
+            <h1 class="text-color-1 text-[14px] lg:text-[16px] font-semibold">
+              Steps to Install on iOS
+            </h1>
+            <p class="text-[10px] md:text-[14px] mb-3 text-red-500 mt-5">
+              请在Safari浏览器访问本网页，以确保正常下载安装!
+            </p>
+            <p class="text-[10px] md:text-[14px] mb-3">
+              第一步：下载安装描述文件
+            </p>
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              1.场景一(推荐)：使用Safari/谷歌浏览器访问本页面网址，点击下载
+              允许安装未知的来源，点击“允许”下载安装必要的描述文件
+            </p>
+            <img
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-1-1.png"
+              alt=""
+              class="w-[90%] h-auto object-cover mx-auto"
+            />
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              2.场景二：使用第三方浏览器(如百度/QQ/UC浏览器)访问本页面网址，点击下载(若你符合场景一，可跳过此步骤)
+            </p>
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              可得到一个“***.mobileconfig”的安装文件，保存到“文件”中
+            </p>
+            <img
+              class="w-[90%] h-auto object-cover mx-auto"
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-1-2-1.png"
+              alt=""
+            />
+            <p
+              class="text-[10px] md:text-[14px] my-3 text-gray-500 text-gray-500"
+            >
+              在“文件”中找到刚才下载的文件，点击
+            </p>
+            <img
+              class="w-[90%] h-auto object-cover mx-auto"
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-1-2-2.png"
+              alt=""
+            />
+            <p class="text-[10px] md:text-[14px] my-3 text-gray-500">
+              第二步：进入手机系统设置页面
+            </p>
+            <img
+              class="w-[90%] h-auto object-cover mx-auto"
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-2.png"
+              alt=""
+            />
+
+            <p class="text-[10px] md:text-[14px] my-3 text-gray-500">
+              第三步：进入通用，点击 描述文件与设备管理
+            </p>
+            <img
+              class="w-[90%] h-auto object-cover mx-auto"
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-3.png"
+              alt=""
+            />
+
+            <p class="text-[10px] md:text-[14px] my-3 text-gray-500">
+              第四步：点击右上角“安装”即可
+            </p>
+            <img
+              class="w-[90%] h-auto object-cover mx-auto"
+              src="https://vf.bbpeyi.cn/web_libs/general_download_guide/images/lite/lite-4.png"
+              alt=""
+            />
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">其他</p>
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              如有任何疑问，请加Q群联系客服。
+            </p>
+            <p class="text-[10px] md:text-[14px] mb-3 text-gray-500">
+              感谢您的支持。
+            </p>
+            <a
+              href="https://d35ptmbqc9rjea.cloudfront.net/files/66da6aeb62bb4/dyls3104f0905.ipa"
+              target="_blank"
+              class="flex items-center downbtn-color py-2 rounded-full w-full justify-center"
+            >
+              <img
+                class="w-5 h-5 object-cover"
+                src="./assets/android.svg"
+                alt=""
+              />
+              <p class="text-[14px]">IOS</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- ios mobile overlay end  -->
     </div>
     <script>
-      const mobileNav = document.getElementById("mobileNav");
-      const mobileOverlay = document.getElementById("mobileOverlay");
-      const closemboverlay = document.getElementById("closemboverlay");
-      const closemboverlay2 = document.getElementById("closemboverlay2");
+      // drawer
+      // const mobileNav = document.getElementById("mobileNav");
+      // const mobileOverlay = document.getElementById("mobileOverlay");
+      // const closemboverlay = document.getElementById("closemboverlay");
+      // const closemboverlay2 = document.getElementById("closemboverlay2");
 
-      mobileNav.addEventListener("click", function () {
-        if (
-          mobileOverlay.style.display === "none" ||
-          mobileOverlay.style.display === ""
-        ) {
-          mobileOverlay.style.display = "block";
-        } else {
-          mobileOverlay.style.display = "none";
+      // mobileNav.addEventListener("click", function () {
+      //   if (
+      //     mobileOverlay.style.display === "none" ||
+      //     mobileOverlay.style.display === ""
+      //   ) {
+      //     mobileOverlay.style.display = "block";
+      //   } else {
+      //     mobileOverlay.style.display = "none";
+      //   }
+      // });
+      // closemboverlay.addEventListener("click", () => {
+      //   mobileOverlay.style.display = "none";
+      // });
+      // closemboverlay2.addEventListener("click", () => {
+      //   mobileOverlay.style.display = "none";
+      // });
+
+      // copy link
+      document.querySelectorAll("button").forEach((button) => {
+        if (button.textContent.includes("Copy Link" || "Copy")) {
+          button.addEventListener("click", () => {
+            navigator.clipboard.writeText("https://dyls.app");
+            alert("Link copied!");
+          });
         }
       });
-      closemboverlay.addEventListener("click", () => {
-        mobileOverlay.style.display = "none";
-      });
-      closemboverlay2.addEventListener("click", () => {
-        mobileOverlay.style.display = "none";
-      });
+
+      // enter link
+      function enterLink(url) {
+        window.location.href = url; // Redirects the user to the specified URL
+      }
     </script>
   </body>
 </html>
